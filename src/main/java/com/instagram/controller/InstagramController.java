@@ -1,5 +1,6 @@
 package com.instagram.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ import com.instagram.exception.UserNotFoundException;
 import com.instagram.service.InstagramService;
 import com.instagram.service.InstagramServiceInterface;
 import com.instagram.ytility.ServiceFactory;
+import com.instagram.ytility.SortingWithName;
 
 public class InstagramController implements InstagramControllerInterface {
 
@@ -60,13 +62,31 @@ public class InstagramController implements InstagramControllerInterface {
 			}
 		}
 		
+		Collections.sort(a, new SortingWithName());
+		
+		System.out.println("______________________________");
+		
+		System.out.println("After Sorting");
+		
+		for(InstagramUser i3 : a) {
+			if(i3 != null) {
+				System.out.println("_____________________________");
+				System.out.println("Name is: "+ i3.getName());
+				System.out.println("Email is: "+ i3.getEmail());
+				System.out.println("Password is: "+ i3.getPassword());
+				System.out.println("Address is: "+ i3.getAddress());
+				aa++;
+			} else {
+				break;
+			}
+		}
 		
 		return aa;
 	}
 
 	public int viewProfileController() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("enter  name to view profile");
+		System.out.println("enter name to view profile");
 		String name = sc.next();
 		
 		InstagramUser iu = new InstagramUser();
