@@ -87,11 +87,11 @@ public class InstagramController implements InstagramControllerInterface {
 
 	public int viewProfileController() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("enter name to view profile");
-		String name = sc.next();
+		System.out.println("enter Email to view profile");
+		String email = sc.next();
 		
 		InstagramUser iu = new InstagramUser();
-		iu.setName(name);
+		iu.setEmail(email);
 		int i2=0;
 		
 		InstagramServiceInterface igs = ServiceFactory.createObject();
@@ -142,8 +142,8 @@ public class InstagramController implements InstagramControllerInterface {
 		
 		InstagramUser lu=new InstagramUser();
 	
-		lu.setPassword(password);
 		lu.setEmail(email);
+		lu.setPassword(password);
 		
 		
 		InstagramServiceInterface ls=ServiceFactory.createObject();

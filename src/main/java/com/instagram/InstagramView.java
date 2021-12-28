@@ -57,10 +57,10 @@ public class InstagramView {
 		  break;
 		case 5 : int i4=ic.loginProfileController();
 		  if(i4>0) {
-			  System.out.println( " profile logedin");
+			  System.out.println( "profile logedin success");
 		  }
 		  else {
-			  System.out.println("could not delete profile");
+			  System.out.println("profile logedin fail");
 		  }
 		  break;
 		default:
