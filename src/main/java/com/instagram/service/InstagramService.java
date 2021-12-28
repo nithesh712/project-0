@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.instagram.dao.InstagramDAOInterface;
 import com.instagram.entity.InstagramUser;
+import com.instagram.entity.TimeLineEntity;
 import com.instagram.exception.UserNotFoundException;
 import com.instagram.ytility.DAOFactory;
 
@@ -22,6 +23,24 @@ public class InstagramService implements InstagramServiceInterface {
 	public InstagramUser viewProfileService(InstagramUser iu) throws UserNotFoundException {
 		InstagramDAOInterface id = DAOFactory.createObject();
 		return id.viewProfileDAO(iu);
+	}
+
+	@Override
+	public int deleteProfileService(InstagramUser lu) {
+		InstagramDAOInterface ld=DAOFactory.createObject();
+		return ld.deleteProfileDAO(lu);
+	}
+
+	@Override
+	public InstagramUser loginProfileService(InstagramUser lu) {
+		InstagramDAOInterface ld=DAOFactory.createObject();
+		return ld.loginProfileDAO(lu);
+	}
+
+	@Override
+	public List<TimeLineEntity> timelineService(InstagramUser lu) {
+		InstagramDAOInterface ld=DAOFactory.createObject();
+		return ld.timelineProfileDAO(lu);
 	}
 
 }

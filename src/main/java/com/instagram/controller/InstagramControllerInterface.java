@@ -8,4 +8,8 @@ public interface InstagramControllerInterface {
 
 	int viewProfileController();
 
+	int deleteProfileController();
+
+	int loginProfileController();
+
 }

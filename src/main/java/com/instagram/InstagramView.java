@@ -14,6 +14,8 @@ public class InstagramView {
 		System.out.println("Press 1 to create");
 		System.out.println("Press 2 to view all");
 		System.out.println("press 3 to view profile of a user");
+		System.out.println("press 4 to delete profile");
+		System.out.println("press 5 to login profile");
 		
 		System.out.print("Enter Option: ");
 		
@@ -45,6 +47,22 @@ public class InstagramView {
 				System.out.println("User profile not found");
 			}
 			break;
+		case 4 : int i3=ic.deleteProfileController();
+		  if(i3>0) {
+			  System.out.println( " record deleted");
+		  }
+		  else {
+			  System.out.println("could not delete profile");
+		  }
+		  break;
+		case 5 : int i4=ic.loginProfileController();
+		  if(i4>0) {
+			  System.out.println( " profile logedin");
+		  }
+		  else {
+			  System.out.println("could not delete profile");
+		  }
+		  break;
 		default:
 			System.out.println("Wrong Choice");
 		}

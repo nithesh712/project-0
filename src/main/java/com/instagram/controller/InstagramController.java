@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.instagram.entity.InstagramUser;
+import com.instagram.entity.TimeLineEntity;
 import com.instagram.exception.UserNotFoundException;
 import com.instagram.service.InstagramService;
 import com.instagram.service.InstagramServiceInterface;
@@ -110,6 +111,62 @@ public class InstagramController implements InstagramControllerInterface {
 				System.err.println(e);
 			}
 			return i2;
+	}
+
+	@Override
+	public int deleteProfileController() {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter email");
+		String email=sc.next();
+		
+		InstagramUser lu=new InstagramUser();
+		lu.setEmail(email);
+		
+		InstagramServiceInterface ls=ServiceFactory.createObject();
+		int lu1=ls.deleteProfileService(lu);
+		return lu1;
+	}
+
+	@Override
+	public int loginProfileController() {
+		Scanner sc=new Scanner(System.in);
+		
+		
+		
+		System.out.println("enter email");
+		String email=sc.next();
+		
+		System.out.println("enter password");
+		String password=sc.next();
+		
+		
+		InstagramUser lu=new InstagramUser();
+	
+		lu.setPassword(password);
+		lu.setEmail(email);
+		
+		
+		InstagramServiceInterface ls=ServiceFactory.createObject();
+		InstagramUser uu=ls.loginProfileService(lu);
+		if(uu!=null) {
+			System.out.println("Welcome "+uu.getName());
+			
+			System.out.println("press 1 to view timeline");
+			System.out.println("press 2 to upload photo");
+			
+			System.out.println("enter your choice");
+			int cc=sc.nextInt();
+			
+			switch(cc) {
+			case 1 : List<TimeLineEntity> tresult=ls.timelineService(lu);
+						for(TimeLineEntity ti:tresult) {
+							System.out.println();
+						}
+			break;
+			}
+		}
+		
+		return 0;
 	}
 
 }
