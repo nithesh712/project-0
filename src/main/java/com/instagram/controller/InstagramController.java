@@ -3,6 +3,7 @@ package com.instagram.controller;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.instagram.entity.InstagramUser;
 import com.instagram.entity.TimeLineEntity;
@@ -13,6 +14,8 @@ import com.instagram.ytility.ServiceFactory;
 import com.instagram.ytility.SortingWithName;
 
 public class InstagramController implements InstagramControllerInterface {
+	
+	Logger log = Logger.getLogger("createProfileController");
 
 	public int createProfileController() {
 		Scanner sc = new Scanner(System.in);
@@ -67,20 +70,20 @@ public class InstagramController implements InstagramControllerInterface {
 		
 		System.out.println("______________________________");
 		
-		System.out.println("After Sorting");
-		
-		for(InstagramUser i3 : a) {
-			if(i3 != null) {
-				System.out.println("_____________________________");
-				System.out.println("Name is: "+ i3.getName());
-				System.out.println("Email is: "+ i3.getEmail());
-				System.out.println("Password is: "+ i3.getPassword());
-				System.out.println("Address is: "+ i3.getAddress());
-				aa++;
-			} else {
-				break;
-			}
-		}
+//		System.out.println("After Sorting");
+//		
+//		for(InstagramUser i3 : a) {
+//			if(i3 != null) {
+//				System.out.println("_____________________________");
+//				System.out.println("Name is: "+ i3.getName());
+//				System.out.println("Email is: "+ i3.getEmail());
+//				System.out.println("Password is: "+ i3.getPassword());
+//				System.out.println("Address is: "+ i3.getAddress());
+//				aa++;
+//			} else {
+//				break;
+//			}
+//		}
 		
 		return aa;
 	}
@@ -180,7 +183,13 @@ public class InstagramController implements InstagramControllerInterface {
 	@Override
 	public int EditProfileController() {
 		
+		
+		
 		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Enter Email to Update: ");
+		String email = sc.next();
+		
 		System.out.print("Update Name: ");
 		String name = sc.next();
 		
@@ -190,8 +199,7 @@ public class InstagramController implements InstagramControllerInterface {
 		System.out.print("Update Address: ");
 		String address = sc.next();
 		
-		System.out.print("Update Email: ");
-		String email = sc.next();
+		
 		
        // After taking input need to send to service in form of object
 		
