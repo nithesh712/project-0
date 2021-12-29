@@ -153,20 +153,61 @@ public class InstagramController implements InstagramControllerInterface {
 			
 			System.out.println("press 1 to view timeline");
 			System.out.println("press 2 to upload photo");
+			System.out.println("press 3 edit profile");
 			
 			System.out.println("enter your choice");
 			int cc=sc.nextInt();
 			
 			switch(cc) {
 			case 1 : List<TimeLineEntity> tresult=ls.timelineService(lu);
-						for(TimeLineEntity ti:tresult) {
-							System.out.println();
-						}
+				for(TimeLineEntity ti:tresult) {
+					System.out.println();
+				}
 			break;
+//			case 3 : int i = ic.editProfileController();
+//			if(i>0) {
+//				System.out.println("Edit Success");
+//			} else {
+//				System.out.println("Edit Fail");
+//			}
+//			break;
 			}
 		}
 		
 		return 0;
+	}
+
+	@Override
+	public int EditProfileController() {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Update Name: ");
+		String name = sc.next();
+		
+		System.out.print("Update Password: ");
+		String password = sc.next();
+		
+		System.out.print("Update Address: ");
+		String address = sc.next();
+		
+		System.out.print("Update Email: ");
+		String email = sc.next();
+		
+       // After taking input need to send to service in form of object
+		
+		InstagramUser iu = new InstagramUser();
+		
+		iu.setName(name);
+		iu.setPassword(password);
+		iu.setAddress(address);
+		iu.setEmail(email);
+		
+		// Object controller created and need to pass to service
+		
+		InstagramServiceInterface igs = ServiceFactory.createObject();
+		int i = igs.editProfileService(iu);
+		
+		return i;
 	}
 
 }

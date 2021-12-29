@@ -20,4 +20,6 @@ public interface InstagramDAOInterface {
 
 	List<TimeLineEntity> timelineProfileDAO(InstagramUser lu);
 
+	int editProfileService(InstagramUser iu);
+
 }

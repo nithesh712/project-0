@@ -20,4 +20,6 @@ public interface InstagramServiceInterface {
 
 	List<TimeLineEntity> timelineService(InstagramUser lu);
 
+	int editProfileService(InstagramUser iu);
+
 }

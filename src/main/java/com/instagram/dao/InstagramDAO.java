@@ -159,4 +159,23 @@ public class InstagramDAO implements InstagramDAOInterface {
 		return ll1;
 	}
 
+	@Override
+	public int editProfileService(InstagramUser iu) {
+		int i = 0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "123456");
+			PreparedStatement ps = con.prepareStatement("UPDATE instagramuser SET name = ?, password = ?, address=? WHERE EMAIL = ?");
+			ps.setString(1, iu.getName());
+			ps.setString(2, iu.getPassword());
+			ps.setString(3, iu.getAddress());
+			ps.setString(4, iu.getEmail());
+			i = ps.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+
 }

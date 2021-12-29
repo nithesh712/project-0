@@ -43,4 +43,10 @@ public class InstagramService implements InstagramServiceInterface {
 		return ld.timelineProfileDAO(lu);
 	}
 
+	@Override
+	public int editProfileService(InstagramUser iu) {
+		InstagramDAOInterface igd=DAOFactory.createObject();
+		 return igd.editProfileService(iu);
+	}
+
 }

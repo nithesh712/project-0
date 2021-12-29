@@ -16,6 +16,7 @@ public class InstagramView {
 		System.out.println("press 3 to view profile of a user");
 		System.out.println("press 4 to delete profile");
 		System.out.println("press 5 to login profile");
+		System.out.println("press 6 to Update profile");
 		
 		System.out.print("Enter Option: ");
 		
@@ -61,6 +62,14 @@ public class InstagramView {
 		  }
 		  else {
 			  System.out.println("profile logedin fail");
+		  }
+		  break;
+		case 6 : int i5=ic.EditProfileController();
+		  if(i5>0) {
+			  System.out.println( "profile Edit success");
+		  }
+		  else {
+			  System.out.println("profile Edit fail");
 		  }
 		  break;
 		default:

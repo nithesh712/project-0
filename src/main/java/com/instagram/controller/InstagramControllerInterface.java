@@ -12,4 +12,6 @@ public interface InstagramControllerInterface {
 
 	int loginProfileController();
 
+	int EditProfileController();
+
 }
