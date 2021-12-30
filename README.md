@@ -10,3 +10,5 @@ coming to the features that are present in this app are
         => Update Profile
         => Delete Profile
         => View Timeline
+        => Send message
+        => Logout
