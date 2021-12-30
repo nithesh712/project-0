@@ -15,9 +15,10 @@ import com.instagram.ytility.SortingWithName;
 
 public class InstagramController implements InstagramControllerInterface {
 	
-	Logger log = Logger.getLogger("createProfileController");
+	private static Logger log = Logger.getLogger("createProfileController");
 
 	public int createProfileController() {
+		log.info("inside create profile method");
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Name: ");
 		String name = sc.next();
@@ -48,7 +49,9 @@ public class InstagramController implements InstagramControllerInterface {
 		return i;
 	}
 	
+	
 	public int viewAllProfileController() {
+		log.info("inside view all profile");
 		int aa = 0;
 		InstagramServiceInterface igs = new InstagramService();
 		List<InstagramUser> a = igs.viewAllProfileService();
@@ -87,8 +90,9 @@ public class InstagramController implements InstagramControllerInterface {
 		
 		return aa;
 	}
-
+	
 	public int viewProfileController() {
+		log.info("inside search profile method");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("enter Email to view profile");
 		String email = sc.next();
@@ -118,6 +122,7 @@ public class InstagramController implements InstagramControllerInterface {
 
 	@Override
 	public int deleteProfileController() {
+		log.info("inside Delete profile");
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter email");
 		String email=sc.next();
@@ -132,9 +137,8 @@ public class InstagramController implements InstagramControllerInterface {
 
 	@Override
 	public int loginProfileController() {
+		log.info("inside Login Profile method");
 		Scanner sc=new Scanner(System.in);
-		
-		
 		
 		System.out.println("enter email");
 		String email=sc.next();
@@ -148,42 +152,57 @@ public class InstagramController implements InstagramControllerInterface {
 		lu.setEmail(email);
 		lu.setPassword(password);
 		
-		
 		InstagramServiceInterface ls=ServiceFactory.createObject();
 		InstagramUser uu=ls.loginProfileService(lu);
+		
+		
 		if(uu!=null) {
+			int i=1;
+			String s="s";
+			while(s.equals("s")){
 			System.out.println("Welcome "+uu.getName());
-			
 			System.out.println("press 1 to view timeline");
-			System.out.println("press 2 to upload photo");
-			System.out.println("press 3 edit profile");
+			System.out.println("press 2 to LogOut");
 			
 			System.out.println("enter your choice");
 			int cc=sc.nextInt();
+			TimeLineEntity tl=new TimeLineEntity();
+			Scanner sc1=new  Scanner(System.in);
 			
 			switch(cc) {
-			case 1 : List<TimeLineEntity> tresult=ls.timelineService(lu);
-				for(TimeLineEntity ti:tresult) {
-					System.out.println();
-				}
-			break;
-//			case 3 : int i = ic.editProfileController();
-//			if(i>0) {
-//				System.out.println("Edit Success");
-//			} else {
-//				System.out.println("Edit Fail");
-//			}
-//			break;
+			case 1 :
+				System.out.println("enter sender name");
+				tl.setSender(sc1.nextLine());
+				System.out.println("enter recevier name");
+				tl.setReceiver(sc1.nextLine());
+				System.out.println("enter message");
+				tl.setMessage(sc1.nextLine());
+				
+				System.out.println("===== message sent sucessfully  to "+tl.getReceiver()+ " ====>>");
+				System.out.println("===> new message from "+ tl.getSender());
+				System.out.println("Message :::"+ tl.getMessage());
+				System.out.println(" do you want to continue press s ");
+				s=sc.next();
+				break;
+			case 2 : 
+				System.out.println("LogOut Successfully");
+				System.out.println("==== Thank you ====");
+				int status = 0;
+				System.exit(status);
+				break;
+		  
 			}
 		}
-		
+			
+		}
 		return 0;
+		
 	}
 
 	@Override
 	public int EditProfileController() {
 		
-		
+		log.info("inside edit profile");
 		
 		Scanner sc = new Scanner(System.in);
 		

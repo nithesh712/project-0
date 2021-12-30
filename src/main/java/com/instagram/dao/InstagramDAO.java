@@ -131,14 +131,14 @@ public class InstagramDAO implements InstagramDAOInterface {
 		}
 		return ll;
 	}
-
+	
 	@Override
 	public List<TimeLineEntity> timelineProfileDAO(InstagramUser lu) {
 		List<TimeLineEntity> ll1 = new ArrayList<TimeLineEntity>();
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "123456");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "govardhan");
 			PreparedStatement ps = con.prepareStatement("select * from timeline where receiver=?");
 			ps.setString(1, lu.getEmail());
 			ResultSet res = ps.executeQuery();
@@ -146,9 +146,8 @@ public class InstagramDAO implements InstagramDAOInterface {
 			while (res.next()) {
 				TimeLineEntity ll = new TimeLineEntity();
 				ll.setSender(res.getString(1));
-				ll.setTimeofmessage(res.getString(2));
-				ll.setMessage(res.getString(3));
-				ll.setReceiver(res.getString(4));
+			    ll.setMessage(res.getString(2));
+				ll.setReceiver(res.getString(3));
 
 				ll1.add(ll);
 			}
@@ -158,7 +157,7 @@ public class InstagramDAO implements InstagramDAOInterface {
 		}
 		return ll1;
 	}
-
+	
 	@Override
 	public int editProfileService(InstagramUser iu) {
 		int i = 0;
